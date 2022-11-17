@@ -34,7 +34,6 @@ The 0 is the placeholder character, and 'end' means the end of the placeholder
 
 Here are the placeholder functions...
 
-
 def h_click(event):
        
        hour_entry.delete(0, 'end')        
@@ -50,4 +49,17 @@ def s_click(event):
  
  Now to get into the main timer function
  
- 
+The condition that needs to be met is for the user to enter in a time,
+once the time is inputed, the function has to combine the sum of the given hours, minutes, and seconds, 
+the unit for the timer is seconds, so we have to convert hours (* 3600) and mintues (* 60) to seconds
+if the user inputs another type of character there will be an exception and error message. 
+
+Here is the source code used:
+
+def timer():
+
+    try:
+        timer_time = int(hour_entry.get()) * 3600 + int(min_entry.get()) * 60 + int(sec_entry.get())
+
+    except:
+        messagebox.showerror(message="Enter Valid Time")
