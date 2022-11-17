@@ -1,2 +1,47 @@
-This doc will go into more depth than the comments used in main.py
+Here is a more in-depth explanation of the source code from "main.py"
 
+This project requires the use of three python modules; 'plyer', 'tkinter', and 'time'.
+
+The 'plyer' module is used specifically for the 'notification' function, 
+which is allows the notification signifying the end of the timer to be displayed as a desktop notification.
+
+The 'tkinter' module is used for both the 'messagebox' and '*' functions.
+'message box' is used to display prompts and message boxes for error messages, and various other questions/uses
+ '*' is used to the create the user interface for the application
+
+The 'time' module is used to create a delay in between every second that passes.
+
+Here is the code for mentioned in this section:
+from plyer import notification
+from tkinter import messagebox
+from tkinter import *
+import time
+
+The next step in the project is to initialize the window and declare the dimensions.
+
+window = Tk() Assigns the Tkinter class, Tk() to the object named 'window'
+
+window.geometry("300x200") Specifies the length and breadth of the application
+
+window.title("DataFlair - python Countdown timer and notification")
+
+Now we have to define functions for the timer and for placeholders. Placeholders are optional, I put them as 0.
+
+Here are the placeholder functions...
+
+def h_click(event):
+       
+       hour_entry.delete(0, 'end')        
+
+def m_click(event):
+       
+       min_entry.delete(0, 'end')
+
+def s_click(event):         
+ 
+ sec_entry.delete(0, 'end')
+ 
+ 
+ Now to get into the main timer function
+ 
+ 
