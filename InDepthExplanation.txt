@@ -6,7 +6,7 @@ The 'plyer' module is used specifically for the 'notification' function,
 which is allows the notification signifying the end of the timer to be displayed as a desktop notification.
 
 The 'tkinter' module is used for both the 'messagebox' and '*' functions.
-'message box' is used to display prompts and message boxes for error messages, and various other questions/uses
+'message box' is used to display prompts and message boxes for error messages
  '*' is used to the create the user interface for the application
 
 The 'time' module is used to create a delay in between every second that passes.
