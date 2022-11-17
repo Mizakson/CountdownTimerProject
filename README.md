@@ -5,4 +5,6 @@ This project is a basic countdown timer web application created solely using pyt
 
 For a more in-depth explanation of the source code please go to "InDepthExplanation.txt"
 
-- Mizakson
+Best, 
+
+Mizakson
