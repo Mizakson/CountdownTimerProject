@@ -27,7 +27,13 @@ window.title("DataFlair - python Countdown timer and notification")
 
 Now we have to define functions for the timer and for placeholders. Placeholders are optional, I put them as 0.
 
+
+There are three placeholder function to represent hours, minutes, and seconds.
+These functions make a widget, when the user inputs numbers the placeholders go away
+The 0 is the placeholder character, and 'end' means the end of the placeholder
+
 Here are the placeholder functions...
+
 
 def h_click(event):
        
