@@ -2,8 +2,8 @@ Here is a more in-depth explanation of the source code from "main.py"
 
 This project requires the use of three python modules; 'plyer', 'tkinter', and 'time'.
 
-The 'plyer' module is used specifically for the 'notification' function, 
-which is allows the notification signifying the end of the timer to be displayed as a desktop notification.
+The 'plyer' module is used specifically for the 'notification' function,
+which allows the notification signifying the end of the timer to be displayed as a desktop notification.
 
 The 'tkinter' module is used for both the 'messagebox' and '*' functions.
 'message box' is used to display prompts and message boxes for error messages
@@ -28,7 +28,7 @@ window.title("DataFlair - python Countdown timer and notification")
 Now we have to define functions for the timer and for placeholders. Placeholders are optional, I put them as 0.
 
 
-There are three placeholder function to represent hours, minutes, and seconds.
+There are three placeholder functions to represent hours, minutes, and seconds.
 These functions make a widget, when the user inputs numbers the placeholders go away
 The 0 is the placeholder character, and 'end' means the end of the placeholder
 
@@ -50,9 +50,9 @@ def s_click(event):
  Now to get into the main timer function
  
 The condition that needs to be met is for the user to enter in a time,
-once the time is inputed, the function has to combine the sum of the given hours, minutes, and seconds, 
-the unit for the timer is seconds, so we have to convert hours (* 3600) and mintues (* 60) to seconds
-if the user inputs another type of character there will be an exception and error message. 
+once the time is inputted, the function has to combine the sum of the given hours, minutes, and seconds,
+the unit for the timer is seconds, so we have to convert hours (* 3600) and minutes (* 60) to seconds
+if the user inputs another type of character there will be an exception and error message.
 
 Here is the source code used:
 
@@ -63,3 +63,102 @@ def timer():
 
     except:
         messagebox.showerror(message="Enter Valid Time")
+
+Inside the same time function the timer needs to be updated, meaning it should decrease by one second until the time runs out, then a notification has to pop up. 
+
+Here is the first part of the nested ‘if’ loop…
+
+# To update the timer with every decreasing second and display a notification
+    if timer_time > 0:
+        hour = 0
+        min = 0
+        sec = 0
+        # If minutes is more than 60, it has to be set to the next hour
+        while timer_time >= 0:
+            min, sec = divmod(timer_time, 60)
+            if min > 60:
+                hour, min = divmod(min, 60)
+
+The divmod function is crucial because this function returns two values,
+the first is the quotient of the division of timer_time by 60 and the
+second value is the remainder of said division,
+with the obtained values, if the number of minutes is over 60 it is converted to hours and minutes
+
+Now comes the part where the declared variables need to be set, and these values have to decrease by 1 second each time the window is updated.
+
+Here is the source code…
+
+           hours.set(hour)
+            mins.set(min)
+            secs.set(sec)
+            # Sleep for 1 creates a delay of 1 second
+            time.sleep(1)
+            # Update the changes on the window for every second
+            window.update()
+            # Decrement the timer value by 1
+            timer_time -= 1
+        # Create a desktop notification
+        notification.notify(
+            # Title of the notification,
+            title="TIME'S UP!",
+            # Body of the notification
+            message="Hey!\nDid you do what you wanted to achieve? \nIf not, try again with a new timer :)",
+            app_icon="/home/deepika/Downloads/internship/countdown_timer/pictures/bell.ico",
+            # Notification stays for 10 seconds
+            timeout=10,
+
+After the timer is up, the application open a new notification letting the user know the timer has finished
+
+messagebox.showinfo(message="Timer Complete!")
+
+Lastly, the display of the application has to be formatted,
+
+These two statements give the application a name, and the timer itself a name.
+
+title_label_1 = Label(window, text="Mizakson - Python - CountdownTimer ", font=("Gayathri", 10)).pack()
+title_label_2 = Label(window, text="Enter time here (HRS, MIN, SEC) ", font=("Gayathri", 9)).pack()
+
+The variables in use…
+
+hours = IntVar()
+mins = IntVar()
+secs = IntVar()
+
+How the user input is read, along with the text formatting of the input…
+
+hour_entry = Entry(window, width=3, textvariable=hours, font=("Ubuntu Mono", 18))
+min_entry = Entry(window, width=3, textvariable=mins, font=("Ubuntu Mono", 18))
+sec_entry = Entry(window, width=3, textvariable=secs, font=("Ubuntu Mono", 18))
+
+The placeholder functions need to be called and displayed, so the timer has 0’s until 
+user input occurs.
+
+hour_entry.insert(0, 00)
+min_entry.insert(0, 00)
+sec_entry.insert(0, 00)
+
+The widgets need to be placed somewhere in the window, using the x and y coordinate system to determine the exact location.
+
+hour_entry.place(x=80, y=40)
+min_entry.place(x=130, y=40)
+sec_entry.place(x=180, y=40)
+
+The placeholder functions need to be removed when the mouse clicks on the timer.
+
+hour_entry.bind("<1>", h_click)
+min_entry.bind("<1>", m_click)
+sec_entry.bind("<1>", s_click)
+
+Can’t forget the button that needs to be pressed to activate the timer, along with the color and font + font size
+
+button = Button(window, text='Activate Timer', bg='Blue', command=timer).pack(pady=40)
+
+The last step is to close the loop and exit the app when the window is terminated or Ctrl+C is pressed.
+
+window.mainloop()
+
+Thank you for reading this long-winded explanation of the “main.py” source code document :)
+
+Best,
+
+Mizakson
