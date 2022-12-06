@@ -1,4 +1,4 @@
-# DataFlair Guide for Countdown Clock and Timer
+# Countdown clock and timer
 # Import necessary modules
 from plyer import notification
 from tkinter import messagebox
