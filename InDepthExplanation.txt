@@ -157,7 +157,6 @@ The last step is to close the loop and exit the app when the window is terminate
 
 window.mainloop()
 
-Thank you for reading this long-winded explanation of the “main.py” source code document :)
 
 Best,
 
