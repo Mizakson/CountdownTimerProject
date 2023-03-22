@@ -1,4 +1,4 @@
-Here is a more in-depth explanation of the source code from "main.py"
+# Here is a more in-depth explanation of the source code from "main.py"
 
 This project requires the use of three python modules; 'plyer', 'tkinter', and 'time'.
 
